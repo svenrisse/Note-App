@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { trpc } from "../utils/trpc";
 
-const Home: NextPage = () => {
+const Newnote: NextPage = () => {
   return (
     <>
       <Head>
@@ -13,16 +13,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        list of all notes
-        <Link
-          className="inline-block rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-green-600 hover:bg-green-700 hover:ring-green-700"
-          href="/newnote"
-        >
-          Add a note
-        </Link>
+        form to add new note
       </main>
     </>
   );
 };
 
-export default Home;
+export default Newnote;
