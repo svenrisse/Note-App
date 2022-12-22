@@ -30,4 +30,19 @@ export const notesRouter = router({
         console.log(`Note cannot be created ${error}`);
       }
     }),
+  allNotes: publicProcedure.query(async ({ ctx }) => {
+    try {
+      return await ctx.prisma.notes.findMany({
+        select: {
+          title: true,
+          id: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+    } catch (error) {
+      console.log(`Cannot fetch your notes ${error}`);
+    }
+  }),
 });
