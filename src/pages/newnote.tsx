@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { trpc } from "../utils/trpc";
 
@@ -15,14 +15,16 @@ const Newnote: NextPage = () => {
     description: "",
   });
 
-  const handleDescriptionChange = (event) => {
+  const handleDescriptionChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setData({
       ...data,
       description: event.target.value,
     });
   };
 
-  const handleTitleChange = (event) => {
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setData({
       ...data,
       title: event.target.value,
