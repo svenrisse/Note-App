@@ -1,7 +1,7 @@
 ### Fullstack Note App built with the T3 Stack.
 
 Check it out on:
-[Vercel](https://www.srisse.dev)
+[Vercel](https://note-app-svenrisse.vercel.app/)
 
 Tools used:
 
