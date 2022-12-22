@@ -38,7 +38,7 @@ const Editnote: NextPage = () => {
       const optimisticUpdate = utils.notes.allNotes.getData();
 
       if (optimisticUpdate) {
-        utils.notes.allNotes.setData(optimisticUpdate);
+        utils.notes.allNotes.setData(undefined, optimisticUpdate);
       }
     },
     onSettled: () => {
