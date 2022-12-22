@@ -45,4 +45,54 @@ export const notesRouter = router({
       console.log(`Cannot fetch your notes ${error}`);
     }
   }),
+  detailNote: publicProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const { id } = input;
+      try {
+        return await ctx.prisma.notes.findUnique({
+          where: {
+            id,
+          },
+        });
+      } catch (error) {
+        console.log(`Note detail not found ${error}`);
+      }
+    }),
+  updateNote: publicProcedure
+    .input(
+      z.object({
+        title: z
+          .string()
+          .min(5, { message: "Must be 5 or more characters!" })
+          .max(200, { message: "Must be less than 200 characters!" })
+          .trim(),
+        description: z
+          .string()
+          .min(5, { message: "Must be 5 or more characters!" })
+          .max(200, { message: "Must be less than 200 characters!" })
+          .trim(),
+        id: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { id } = input;
+      try {
+        return await ctx.prisma.notes.update({
+          where: {
+            id,
+          },
+          data: {
+            title: input.title,
+            description: input.description,
+          },
+        });
+      } catch (error) {
+        console.log(`Note cannot be updated ${error}`);
+      }
+    }),
 });
