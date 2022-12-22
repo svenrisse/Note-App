@@ -33,6 +33,18 @@ const Newnote: NextPage = () => {
       title: event.target.value,
     });
   };
+
+  const handleSubmit = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    addNewNote.mutate({
+      title: data.title,
+      description: data.description,
+    });
+    setData({
+      title: "",
+      description: "",
+    });
+  };
   return (
     <>
       <Head>
@@ -50,19 +62,7 @@ const Newnote: NextPage = () => {
         <h1 className="mb-6 text-left text-3xl font-bold tracking-tight text-gray-900">
           Add new notes
         </h1>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            addNewNote.mutate({
-              title: data.title,
-              description: data.description,
-            });
-            setData({
-              title: "",
-              description: "",
-            });
-          }}
-        >
+        <form onSubmit={(event) => handleSubmit(event)}>
           <input
             type="text"
             required
