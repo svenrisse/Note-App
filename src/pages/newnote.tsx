@@ -72,7 +72,7 @@ const Newnote: NextPage = () => {
             className="border-1 mb-2 block w-full rounded-sm border-green-800 bg-neutral-100 px-4 py-2 focus:outline-none"
           />
           <textarea
-            type="text-area"
+            typeof="text-area"
             required
             value={data.description}
             placeholder="Your description"
