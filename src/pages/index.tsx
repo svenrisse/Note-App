@@ -24,7 +24,7 @@ const AllMyNotes: NextPage = () => {
 
   return (
     <>
-      {data.map((note, index) => {
+      {data?.map((note, index) => {
         return (
           <div key={index} className="border border-gray-100 px-4 py-4">
             <div className="flex items-center justify-between">
@@ -72,7 +72,7 @@ const AllMyNotes: NextPage = () => {
         );
       })}
       <p className="bg-green-50 p-7 text-xl font-medium text-green-900">
-        {data.length === 0 && <>✏️ &nbsp; You dont have any notes yet!</>}
+        {data?.length === 0 && <>✏️ &nbsp; You dont have any notes yet!</>}
       </p>
     </>
   );
