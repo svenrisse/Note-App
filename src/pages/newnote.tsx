@@ -1,8 +1,8 @@
-import { type NextPage } from "next";
+import next, { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
-
 import { trpc } from "../utils/trpc";
 
 interface FormData {
@@ -11,6 +11,7 @@ interface FormData {
 }
 const Newnote: NextPage = () => {
   const utils = trpc.useContext();
+  const nextRouter = useRouter();
 
   const addNewNote = trpc.notes.newNote.useMutation({
     onMutate: () => {
@@ -53,10 +54,7 @@ const Newnote: NextPage = () => {
       title: data.title,
       description: data.description,
     });
-    setData({
-      title: "",
-      description: "",
-    });
+    nextRouter.push("/");
   };
   return (
     <>
