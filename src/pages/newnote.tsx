@@ -10,13 +10,16 @@ interface FormData {
   description: string;
 }
 const Newnote: NextPage = () => {
+  const utils = trpc.useContext();
+
+  const addNewNote = trpc.notes.newNote.useMutation({});
   const [data, setData] = useState<FormData>({
     title: "",
     description: "",
   });
 
   const handleDescriptionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setData({
       ...data,
