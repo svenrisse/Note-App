@@ -1,10 +1,33 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 
 import { trpc } from "../utils/trpc";
 
+interface FormData {
+  title: string;
+  description: string;
+}
 const Newnote: NextPage = () => {
+  const [data, setData] = useState<FormData>({
+    title: "",
+    description: "",
+  });
+
+  const handleDescriptionChange = (event) => {
+    setData({
+      ...data,
+      description: event.target.value,
+    });
+  };
+
+  const handleTitleChange = (event) => {
+    setData({
+      ...data,
+      title: event.target.value,
+    });
+  };
   return (
     <>
       <Head>
@@ -24,28 +47,36 @@ const Newnote: NextPage = () => {
         </h1>
         <form
           onSubmit={(event) => {
-            //submit handler
+            event.preventDefault();
+            addNewNote.mutate({
+              title: data.title,
+              description: data.description,
+            });
+            setData({
+              title: "",
+              description: "",
+            });
           }}
         >
           <input
             type="text"
             required
-            value=""
+            value={data.title}
             placeholder="Your title"
-            onChange=""
+            onChange={(event) => handleTitleChange(event)}
             className="border-1 mb-2 block w-full rounded-sm border-green-800 bg-neutral-100 px-4 py-2 focus:outline-none"
           />
           <textarea
             type="text-area"
             required
-            value=""
-            placeholder="Your title"
-            onChange=""
+            value={data.description}
+            placeholder="Your description"
+            onChange={(event) => handleDescriptionChange(event)}
             className="border-1 mb-2 block w-full rounded-sm border-green-800 bg-neutral-100 px-4 py-2 focus:outline-none"
           />
           <button
             type="submit"
-            className="font block w-full rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-green-600 hover:bg-green-700 hover:ring-green-700"
+            className="block w-full rounded-lg bg-green-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-green-600 hover:bg-green-700 hover:ring-green-700"
           >
             Add a note
           </button>
