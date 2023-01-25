@@ -81,6 +81,7 @@ const Newnote: NextPage = () => {
             placeholder="Your title"
             onChange={(event) => handleTitleChange(event)}
             className="border-1 mb-2 block w-full rounded-sm border-green-800 bg-neutral-100 px-4 py-2 focus:outline-none"
+            minLength={5}
           />
           <textarea
             typeof="text-area"
@@ -89,6 +90,7 @@ const Newnote: NextPage = () => {
             placeholder="Your description"
             onChange={(event) => handleDescriptionChange(event)}
             className="border-1 mb-2 block w-full rounded-sm border-green-800 bg-neutral-100 px-4 py-2 focus:outline-none"
+            minLength={5}
           />
           <button
             type="submit"
