@@ -1,7 +1,7 @@
 ### Fullstack Note App built with the T3 Stack.
 
 Check it out on:
-[Vercel](https://note-app-svenrisse.vercel.app/)
+[Vercel](https://note-app-ten-pi.vercel.app/)
 
 Tools used:
 
@@ -11,3 +11,4 @@ Tools used:
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 - [zod](https://zod.dev/)
+- [CockroachDB](https://www.cockroachlabs.com/)
